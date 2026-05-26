@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cash829 소개 사이트</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      background: radial-gradient(circle at top, #1e3a8a, #020617 55%);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 880px;
+      background: rgba(15, 23, 42, 0.82);
+      border: 1px solid rgba(147, 197, 253, 0.3);
+      border-radius: 28px;
+      padding: 42px;
+      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(14px);
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(59, 130, 246, 0.18);
+      color: #93c5fd;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: clamp(38px, 8vw, 72px);
+      line-height: 1;
+      margin-bottom: 18px;
+      letter-spacing: -2px;
+    }
+
+    h1 span {
+      color: #60a5fa;
+      text-shadow: 0 0 24px rgba(96, 165, 250, 0.75);
+    }
+
+    .intro {
+      font-size: 18px;
+      line-height: 1.8;
+      color: #cbd5e1;
+      max-width: 680px;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 34px;
+    }
+
+    .button {
+      text-decoration: none;
+      color: white;
+      padding: 13px 20px;
+      border-radius: 14px;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+
+    .button.primary {
+      background: #2563eb;
+    }
+
+    .button.secondary {
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(37, 99, 235, 0.35);
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+    }
+
+    .info-box {
+      padding: 20px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .info-box h3 {
+      color: #93c5fd;
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .info-box p {
+      color: #e2e8f0;
+      line-height: 1.5;
+      font-size: 15px;
+    }
+
+    footer {
+      margin-top: 32px;
+      color: #64748b;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    @media (max-width: 520px) {
+      .card {
+        padding: 28px;
+      }
+
+      .buttons {
+        flex-direction: column;
+      }
+
+      .button {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="tag">주소 / ID: Cash829</div>
+
+    <h1>안녕, 나는 <span>Cash829</span></h1>
+
+    <p class="intro">
+      여기는 간단한 자기소개 사이트입니다. 관심 있는 분야, 프로젝트, 목표를 한눈에 보여주기 위해 만든 개인 소개 페이지예요.
+      깔끔하지만 살짝 게임 같은 분위기를 넣어서 기억에 남도록 구성했습니다.
+    </p>
+
+    <div class="buttons">
+      <a href="#about" class="button primary">소개 보기</a>
+      <a href="#contact" class="button secondary">연락 정보</a>
+    </div>
+
+    <section class="info-grid" id="about">
+      <div class="info-box">
+        <h3>관심 분야</h3>
+        <p>게임 개발, 웹사이트 제작, 아이디어 기획에 관심이 있습니다.</p>
+      </div>
+
+      <div class="info-box">
+        <h3>목표</h3>
+        <p>나만의 프로젝트를 만들고, 실력 있는 개발자로 성장하는 것입니다.</p>
+      </div>
+
+      <div class="info-box">
+        <h3>장점</h3>
+        <p>새로운 아이디어를 떠올리고, 직접 만들어보는 것을 좋아합니다.</p>
+      </div>
+
+      <div class="info-box" id="contact">
+        <h3>주소</h3>
+        <p>Cash829</p>
+      </div>
+    </section>
+
+    <footer>
+      © 2026 Cash829. Simple Intro Website.
+    </footer>
+  </main>
+</body>
+</html>
