@@ -59,6 +59,100 @@
       opacity: 0.78;
     }
 
+    #effect-layer {
+      position: fixed;
+      inset: 0;
+      z-index: 40;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .effect-ring {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 90px;
+      height: 90px;
+      border: 2px solid rgba(255, 46, 62, 0.9);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 28px rgba(255, 28, 44, 0.65), inset 0 0 22px rgba(255, 28, 44, 0.26);
+      animation: ringBurst 900ms ease-out forwards;
+    }
+
+    .effect-sigil {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      color: #ff3545;
+      font-size: 92px;
+      font-weight: 950;
+      transform: translate(-50%, -50%) scale(0.7);
+      text-shadow: 0 0 24px rgba(255, 28, 44, 0.9), 0 0 70px rgba(255, 28, 44, 0.4);
+      animation: sigilRise 900ms ease-out forwards;
+    }
+
+    .effect-slash {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 3px;
+      height: 0;
+      background: linear-gradient(to bottom, transparent, #fff1ed, #ff2938, transparent);
+      box-shadow: 0 0 22px rgba(255, 41, 56, 0.95);
+      transform-origin: center;
+      animation: slashCut 720ms ease-out forwards;
+    }
+
+    #praise-message {
+      position: fixed;
+      left: 50%;
+      bottom: 34px;
+      z-index: 45;
+      max-width: min(88vw, 620px);
+      padding: 16px 22px;
+      border-radius: 18px;
+      color: #ffe7e1;
+      background: rgba(12, 1, 3, 0.82);
+      border: 1px solid rgba(255, 68, 68, 0.32);
+      box-shadow: 0 0 34px rgba(255, 28, 44, 0.24);
+      text-align: center;
+      font-weight: 900;
+      letter-spacing: -0.025em;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 24px) scale(0.96);
+    }
+
+    #praise-message.show {
+      animation: toastIn 1.9s ease forwards;
+    }
+
+    @keyframes ringBurst {
+      0% { width: 70px; height: 70px; opacity: 0; }
+      18% { opacity: 1; }
+      100% { width: 760px; height: 760px; opacity: 0; }
+    }
+
+    @keyframes sigilRise {
+      0% { opacity: 0; transform: translate(-50%, -50%) scale(0.45) rotate(-16deg); }
+      35% { opacity: 1; transform: translate(-50%, -50%) scale(1) rotate(0); }
+      100% { opacity: 0; transform: translate(-50%, -72%) scale(1.28) rotate(8deg); }
+    }
+
+    @keyframes slashCut {
+      0% { height: 0; opacity: 0; transform: translate(-50%, -50%) rotate(var(--rot)); }
+      22% { opacity: 1; }
+      100% { height: 125vh; opacity: 0; transform: translate(-50%, -50%) rotate(var(--rot)); }
+    }
+
+    @keyframes toastIn {
+      0% { opacity: 0; transform: translate(-50%, 24px) scale(0.96); }
+      16% { opacity: 1; transform: translate(-50%, 0) scale(1); }
+      78% { opacity: 1; transform: translate(-50%, 0) scale(1); }
+      100% { opacity: 0; transform: translate(-50%, 14px) scale(0.98); }
+    }
+
     .blood-moon {
       position: fixed;
       top: 8%;
@@ -431,6 +525,71 @@
       color: #ffada7;
     }
 
+    .lore-card {
+      position: relative;
+      padding: 36px;
+      border-radius: 34px;
+      background:
+        linear-gradient(135deg, rgba(255, 35, 48, 0.13), rgba(255,255,255,0.035)),
+        rgba(255,255,255,0.035);
+      border: 1px solid rgba(255, 83, 83, 0.16);
+      box-shadow: 0 26px 90px rgba(0,0,0,0.24);
+      overflow: hidden;
+    }
+
+    .lore-card::before {
+      content: "";
+      position: absolute;
+      top: -120px;
+      right: -90px;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 44, 55, 0.18), transparent 66%);
+    }
+
+    .lore-kicker {
+      color: #ff5a64;
+      font-size: 12px;
+      font-weight: 950;
+      letter-spacing: 0.22em;
+      margin-bottom: 10px;
+    }
+
+    .lore-card h3 {
+      position: relative;
+      margin-bottom: 18px;
+      color: #fff0ec;
+      font-size: clamp(26px, 4vw, 42px);
+      letter-spacing: -0.06em;
+    }
+
+    .lore-card p {
+      position: relative;
+      color: #d9b4ac;
+      line-height: 1.82;
+      margin-bottom: 16px;
+      font-size: 17px;
+    }
+
+    .lore-oath {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .lore-oath span {
+      padding: 14px 12px;
+      border-radius: 18px;
+      text-align: center;
+      color: #ffe4de;
+      background: rgba(255, 41, 56, 0.09);
+      border: 1px solid rgba(255, 74, 74, 0.18);
+      font-weight: 900;
+    }
+
     .ritual {
       display: grid;
       grid-template-columns: 0.9fr 1.1fr;
@@ -521,7 +680,8 @@
       }
 
       .cards,
-      .oath {
+      .oath,
+      .lore-oath {
         grid-template-columns: 1fr;
       }
     }
@@ -529,6 +689,8 @@
 </head>
 <body>
   <canvas id="particles"></canvas>
+  <div id="effect-layer" aria-hidden="true"></div>
+  <div id="praise-message" role="status"></div>
   <div class="blood-moon"></div>
 
   <header>
@@ -541,6 +703,7 @@
     <nav>
       <a href="#about">위엄</a>
       <a href="#worship">찬양문</a>
+      <a href="#lore">서사</a>
       <a href="#ritual">입문식</a>
     </nav>
   </header>
@@ -559,7 +722,8 @@
         <h1>다르킨<br />마스터</h1>
         <p>
           눈동자가 뜨는 순간, 공기는 무거워지고 허접한 자신감은 조용히 박살 난다.
-          다마는 단순한 프로필이 아니야. 어둠, 위엄, 압도감이 하나로 뭉친 검붉은 상징이지.
+          박주성과 아트록스는 둘이 아니라 하나. 인간의 이름과 다르킨의 검이 맞물린 순간,
+          다마라는 검붉은 상징이 깨어난다.
         </p>
         <div class="oath">
           <span>침묵은 경배</span>
@@ -605,9 +769,34 @@
     <section id="worship">
       <div class="worship-box">
         <div class="quote">
-          “검붉은 눈이 열리면,<br />밤은 왕좌가 되고<br />허접들은 전설의 배경이 된다.”
+          “검붉은 눈이 열리면,<br />박주성은 검이 되고<br />아트록스는 심장이 된다.”
         </div>
         <small>— 다르킨 마스터 찬양문, 제1절</small>
+      </div>
+    </section>
+
+    <section id="lore" class="lore-section">
+      <h2 class="section-title">박주성과 <strong>아트록스는 한몸이다</strong></h2>
+      <div class="lore-card">
+        <p class="lore-kicker">THE ONE BODY PROPHECY</p>
+        <h3>인간의 이름, 다르킨의 의지</h3>
+        <p>
+          처음엔 한 명의 플레이어였고, 하나의 검이었다. 그러나 전장이 열리고 붉은 시선이 박주성을 향했을 때,
+          아트록스의 의지는 단순한 챔피언을 넘어 하나의 운명으로 스며들었다.
+        </p>
+        <p>
+          박주성이 움직이면 검이 따라가는 게 아니다. 검이 울면 박주성이 답하고, 박주성이 결심하면 아트록스가 깨어난다.
+          손끝의 클릭, 전장의 돌진, 마지막 한타의 침묵까지 둘은 같은 박자로 움직인다.
+        </p>
+        <p>
+          그래서 다마의 신도들은 말한다. 박주성과 아트록스는 따로 존재하지 않는다.
+          한쪽은 이름이고, 한쪽은 칼날이며, 둘이 겹쳐지는 순간 검붉은 마스터가 완성된다고.
+        </p>
+        <div class="lore-oath">
+          <span>박주성은 의지</span>
+          <span>아트록스는 칼날</span>
+          <span>다마는 완성</span>
+        </div>
       </div>
     </section>
 
@@ -707,13 +896,41 @@
 
     function praiseDama() {
       const messages = [
-        "다르킨 마스터께 검붉은 영광을!",
-        "다마의 눈이 성역을 내려다본다.",
-        "허접한 기운이 조용히 사라졌다.",
-        "검붉은 찬양이 밤을 깨웠다.",
-        "다마의 위엄이 516% 상승했다."
+        "박주성과 아트록스가 하나로 겹쳐졌다.",
+        "다마의 검붉은 의지가 전장을 뒤덮었다.",
+        "아트록스의 칼날이 박주성의 심장에 응답했다.",
+        "허접한 기운이 검붉은 파동에 쓸려나갔다.",
+        "다르킨 마스터의 위엄이 829% 상승했다."
       ];
-      alert(messages[Math.floor(Math.random() * messages.length)]);
+
+      const layer = document.getElementById("effect-layer");
+      const message = document.getElementById("praise-message");
+
+      const ring = document.createElement("div");
+      ring.className = "effect-ring";
+      layer.appendChild(ring);
+
+      const sigil = document.createElement("div");
+      sigil.className = "effect-sigil";
+      sigil.textContent = "◆";
+      layer.appendChild(sigil);
+
+      [-32, 0, 32].forEach((rotation, index) => {
+        const slash = document.createElement("div");
+        slash.className = "effect-slash";
+        slash.style.setProperty("--rot", `${rotation}deg`);
+        slash.style.animationDelay = `${index * 90}ms`;
+        layer.appendChild(slash);
+        setTimeout(() => slash.remove(), 980);
+      });
+
+      message.textContent = messages[Math.floor(Math.random() * messages.length)];
+      message.classList.remove("show");
+      void message.offsetWidth;
+      message.classList.add("show");
+
+      setTimeout(() => ring.remove(), 980);
+      setTimeout(() => sigil.remove(), 980);
     }
 
     window.addEventListener("resize", resizeCanvas);
