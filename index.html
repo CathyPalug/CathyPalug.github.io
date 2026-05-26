@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cash829 소개 사이트</title>
+  <title>다르킨 마스터 찬양소</title>
   <style>
     * {
       margin: 0;
@@ -13,174 +13,442 @@
 
     body {
       min-height: 100vh;
-      font-family: Arial, sans-serif;
-      background: radial-gradient(circle at top, #1e3a8a, #020617 55%);
-      color: white;
+      font-family: "Pretendard", "Noto Sans KR", Arial, sans-serif;
+      color: #f7e9df;
+      background:
+        radial-gradient(circle at top, rgba(255, 45, 45, 0.22), transparent 35%),
+        linear-gradient(135deg, #090607 0%, #19080b 45%, #050203 100%);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 46px 46px;
+      pointer-events: none;
+      mask-image: linear-gradient(to bottom, #000, transparent 85%);
+    }
+
+    .glow {
+      position: fixed;
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      background: rgba(255, 0, 50, 0.18);
+      filter: blur(60px);
+      animation: float 8s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+
+    .glow.one { top: 8%; left: -80px; }
+    .glow.two { right: -120px; bottom: 10%; animation-delay: 1.5s; }
+
+    @keyframes float {
+      from { transform: translateY(0) scale(1); }
+      to { transform: translateY(45px) scale(1.12); }
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
-      padding: 24px;
-    }
-
-    .card {
-      width: 100%;
-      max-width: 880px;
-      background: rgba(15, 23, 42, 0.82);
-      border: 1px solid rgba(147, 197, 253, 0.3);
-      border-radius: 28px;
-      padding: 42px;
-      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.45);
+      padding: 22px 8vw;
+      background: rgba(8, 3, 5, 0.72);
       backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255, 110, 110, 0.18);
     }
 
-    .tag {
-      display: inline-block;
-      padding: 8px 14px;
-      border-radius: 999px;
-      background: rgba(59, 130, 246, 0.18);
-      color: #93c5fd;
+    .logo {
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: #ff4b4b;
+      text-shadow: 0 0 18px rgba(255, 52, 52, 0.7);
+    }
+
+    nav a {
+      color: #f7d6cd;
+      text-decoration: none;
+      margin-left: 24px;
       font-size: 14px;
-      margin-bottom: 20px;
+      opacity: 0.84;
+      transition: 0.2s;
+    }
+
+    nav a:hover {
+      color: #ff5e5e;
+      opacity: 1;
+    }
+
+    .hero {
+      min-height: 86vh;
+      display: grid;
+      place-items: center;
+      padding: 80px 8vw 40px;
+      text-align: center;
+      position: relative;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 9px 16px;
+      margin-bottom: 22px;
+      border: 1px solid rgba(255, 90, 90, 0.45);
+      border-radius: 999px;
+      color: #ffb0a8;
+      background: rgba(255, 54, 54, 0.08);
+      box-shadow: 0 0 24px rgba(255, 40, 40, 0.16);
+      font-size: 14px;
     }
 
     h1 {
-      font-size: clamp(38px, 8vw, 72px);
-      line-height: 1;
-      margin-bottom: 18px;
-      letter-spacing: -2px;
+      font-size: clamp(52px, 10vw, 128px);
+      line-height: 0.9;
+      letter-spacing: -0.08em;
+      margin-bottom: 26px;
+      background: linear-gradient(180deg, #fff1e8 0%, #ff4646 56%, #7a0000 100%);
+      -webkit-background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 46px rgba(255, 10, 10, 0.25);
     }
 
-    h1 span {
-      color: #60a5fa;
-      text-shadow: 0 0 24px rgba(96, 165, 250, 0.75);
-    }
-
-    .intro {
-      font-size: 18px;
-      line-height: 1.8;
-      color: #cbd5e1;
-      max-width: 680px;
-      margin-bottom: 30px;
+    .hero p {
+      max-width: 760px;
+      margin: 0 auto 34px;
+      color: #dec1b7;
+      font-size: clamp(17px, 2.4vw, 22px);
+      line-height: 1.75;
     }
 
     .buttons {
       display: flex;
+      justify-content: center;
       gap: 14px;
       flex-wrap: wrap;
-      margin-bottom: 34px;
     }
 
-    .button {
+    .btn {
+      border: none;
+      padding: 15px 24px;
+      border-radius: 16px;
+      font-weight: 800;
+      cursor: pointer;
       text-decoration: none;
-      color: white;
-      padding: 13px 20px;
-      border-radius: 14px;
-      font-weight: bold;
-      transition: 0.2s;
+      transition: 0.22s ease;
     }
 
-    .button.primary {
-      background: #2563eb;
+    .btn.primary {
+      color: #210305;
+      background: linear-gradient(135deg, #ffddd2, #ff3333);
+      box-shadow: 0 14px 40px rgba(255, 45, 45, 0.35);
     }
 
-    .button.secondary {
-      border: 1px solid rgba(255, 255, 255, 0.22);
+    .btn.secondary {
+      color: #ffd5cd;
       background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 150, 150, 0.18);
     }
 
-    .button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 28px rgba(37, 99, 235, 0.35);
+    .btn:hover {
+      transform: translateY(-4px);
     }
 
-    .info-grid {
+    main {
+      padding: 30px 8vw 90px;
+    }
+
+    section {
+      max-width: 1120px;
+      margin: 0 auto 90px;
+    }
+
+    .section-title {
+      font-size: clamp(30px, 5vw, 52px);
+      letter-spacing: -0.06em;
+      margin-bottom: 26px;
+    }
+
+    .cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      padding: 26px;
+      border-radius: 26px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.085), rgba(255,255,255,0.035));
+      border: 1px solid rgba(255, 155, 155, 0.14);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.24);
+      min-height: 210px;
+      transition: 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(255, 95, 95, 0.44);
+      box-shadow: 0 25px 80px rgba(255, 10, 10, 0.14);
+    }
+
+    .icon {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 18px;
+      border-radius: 16px;
+      background: rgba(255, 54, 54, 0.12);
+      color: #ff6b6b;
+      font-size: 24px;
+    }
+
+    .card h3 {
+      font-size: 22px;
+      margin-bottom: 10px;
+      color: #fff0ea;
+    }
+
+    .card p {
+      color: #d8b6ae;
+      line-height: 1.7;
+    }
+
+    .altar {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .quote-box {
+      padding: 36px;
+      border-radius: 32px;
+      background:
+        linear-gradient(135deg, rgba(255, 55, 55, 0.16), rgba(255,255,255,0.04)),
+        rgba(255,255,255,0.04);
+      border: 1px solid rgba(255, 130, 130, 0.2);
+    }
+
+    .quote {
+      font-size: clamp(26px, 4vw, 46px);
+      line-height: 1.25;
+      letter-spacing: -0.055em;
+      font-weight: 900;
+      margin-bottom: 20px;
+    }
+
+    .quote small {
+      color: #ff9a90;
+    }
+
+    .stats {
+      display: grid;
       gap: 16px;
     }
 
-    .info-box {
-      padding: 20px;
-      border-radius: 20px;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+    .stat {
+      padding: 24px;
+      border-radius: 24px;
+      background: rgba(255,255,255,0.055);
+      border: 1px solid rgba(255,255,255,0.09);
     }
 
-    .info-box h3 {
-      color: #93c5fd;
-      font-size: 16px;
-      margin-bottom: 8px;
+    .stat strong {
+      display: block;
+      font-size: 36px;
+      color: #ff5555;
+      margin-bottom: 4px;
     }
 
-    .info-box p {
-      color: #e2e8f0;
-      line-height: 1.5;
-      font-size: 15px;
+    .timeline {
+      display: grid;
+      gap: 16px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 18px;
+      align-items: start;
+      padding: 22px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.045);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .num {
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      background: #ff3c3c;
+      color: #210305;
+    }
+
+    .step h3 {
+      margin-bottom: 7px;
+      color: #ffece6;
+    }
+
+    .step p {
+      color: #d5b0a9;
+      line-height: 1.65;
     }
 
     footer {
-      margin-top: 32px;
-      color: #64748b;
-      font-size: 14px;
       text-align: center;
+      padding: 42px 8vw;
+      color: #b89088;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      background: rgba(0,0,0,0.25);
     }
 
-    @media (max-width: 520px) {
-      .card {
-        padding: 28px;
-      }
-
-      .buttons {
+    @media (max-width: 840px) {
+      header {
+        align-items: flex-start;
+        gap: 14px;
         flex-direction: column;
       }
 
-      .button {
-        text-align: center;
+      nav a {
+        margin: 0 14px 0 0;
+      }
+
+      .cards,
+      .altar {
+        grid-template-columns: 1fr;
+      }
+
+      .step {
+        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
 <body>
-  <main class="card">
-    <div class="tag">주소 / ID: Cash829</div>
+  <div class="glow one"></div>
+  <div class="glow two"></div>
 
-    <h1>안녕, 나는 <span>Cash829</span></h1>
+  <header>
+    <div class="logo">DARKIN MASTER</div>
+    <nav>
+      <a href="#praise">찬양</a>
+      <a href="#altar">제단</a>
+      <a href="#path">입문</a>
+    </nav>
+  </header>
 
-    <p class="intro">
-      여기는 간단한 자기소개 사이트입니다. 관심 있는 분야, 프로젝트, 목표를 한눈에 보여주기 위해 만든 개인 소개 페이지예요.
-      깔끔하지만 살짝 게임 같은 분위기를 넣어서 기억에 남도록 구성했습니다.
-    </p>
-
-    <div class="buttons">
-      <a href="#about" class="button primary">소개 보기</a>
-      <a href="#contact" class="button secondary">연락 정보</a>
+  <section class="hero">
+    <div>
+      <span class="badge">검붉은 영광의 팬사이트</span>
+      <h1>다르킨<br />마스터</h1>
+      <p>
+        어둠을 다루는 자, 전장을 압도하는 자, 그리고 허접한 적들을 조용히 접어버리는 존재.
+        이곳은 오직 다르킨 마스터의 위엄을 기록하기 위한 성역이다.
+      </p>
+      <div class="buttons">
+        <a class="btn primary" href="#praise">찬양 시작</a>
+        <a class="btn secondary" href="#path">입문 의식 보기</a>
+      </div>
     </div>
+  </section>
 
-    <section class="info-grid" id="about">
-      <div class="info-box">
-        <h3>관심 분야</h3>
-        <p>게임 개발, 웹사이트 제작, 아이디어 기획에 관심이 있습니다.</p>
-      </div>
-
-      <div class="info-box">
-        <h3>목표</h3>
-        <p>나만의 프로젝트를 만들고, 실력 있는 개발자로 성장하는 것입니다.</p>
-      </div>
-
-      <div class="info-box">
-        <h3>장점</h3>
-        <p>새로운 아이디어를 떠올리고, 직접 만들어보는 것을 좋아합니다.</p>
-      </div>
-
-      <div class="info-box" id="contact">
-        <h3>주소</h3>
-        <p>Cash829</p>
+  <main>
+    <section id="praise">
+      <h2 class="section-title">왜 다르킨 마스터인가?</h2>
+      <div class="cards">
+        <article class="card">
+          <div class="icon">⚔</div>
+          <h3>압도적인 존재감</h3>
+          <p>등장만으로 분위기를 바꾸고, 전장의 흐름을 한 번에 가져온다. 말 그대로 보스몹 감성.</p>
+        </article>
+        <article class="card">
+          <div class="icon">🔥</div>
+          <h3>불타는 카리스마</h3>
+          <p>차갑게 계산하고 뜨겁게 터뜨린다. 멋이라는 단어가 사람으로 변하면 딱 이런 느낌.</p>
+        </article>
+        <article class="card">
+          <div class="icon">👑</div>
+          <h3>마스터의 품격</h3>
+          <p>강함만 있는 게 아니다. 여유, 위엄, 그리고 상대를 내려다보는 품격까지 갖췄다.</p>
+        </article>
       </div>
     </section>
 
-    <footer>
-      © 2026 Cash829. Simple Intro Website.
-    </footer>
+    <section id="altar" class="altar">
+      <div class="quote-box">
+        <p class="quote">“검붉은 길 위에서<br />허접들은 무릎 꿇고,<br />마스터만이 전진한다.”</p>
+        <small>— 다르킨 마스터 찬양문 제1장</small>
+      </div>
+      <div class="stats">
+        <div class="stat">
+          <strong>999+</strong>
+          <span>쌓여가는 전설</span>
+        </div>
+        <div class="stat">
+          <strong>100%</strong>
+          <span>압도적인 간지 농도</span>
+        </div>
+        <div class="stat">
+          <strong>0</strong>
+          <span>마스터 앞에서 살아남은 허접</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="path">
+      <h2 class="section-title">입문 의식</h2>
+      <div class="timeline">
+        <div class="step">
+          <div class="num">01</div>
+          <div>
+            <h3>이름을 새겨라</h3>
+            <p>먼저 마음속에 다르킨 마스터의 이름을 새긴다. 잊으면 허접 인증이다.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num">02</div>
+          <div>
+            <h3>검붉은 의지를 가져라</h3>
+            <p>어설픈 마음가짐은 버리고, 끝까지 밀어붙이는 집중력을 장착한다.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num">03</div>
+          <div>
+            <h3>찬양 버튼을 눌러라</h3>
+            <p>아래 버튼을 누르면 제단이 반응한다. 별건 아니고 좀 멋있다.</p>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top:28px;">
+        <button class="btn primary" onclick="praise()">다르킨 마스터 찬양!</button>
+      </div>
+    </section>
   </main>
+
+  <footer>
+    © 2026 Darkin Master Fan Shrine. 공식 사이트 아님. 팬메이드 찬양소임.
+  </footer>
+
+  <script>
+    function praise() {
+      const lines = [
+        "다르킨 마스터께 영광을!",
+        "허접한 적들은 이미 도망갔다!",
+        "검붉은 제단이 반응했다!",
+        "마스터의 위엄이 829% 증가했다!"
+      ];
+      alert(lines[Math.floor(Math.random() * lines.length)]);
+    }
+  </script>
 </body>
 </html>
